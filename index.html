@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Bienvenue sur AgriPilot</title>
+  <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="agri.css">
+  <style>
+    .welcome{min-height:100vh;background:radial-gradient(circle at 15% 20%,#dff5b9 0,transparent 28%),linear-gradient(135deg,#103d2b,#28734c);color:white;padding:36px 0}.hero{padding:70px 0 45px}.hero h1{font-size:clamp(2.2rem,5vw,4.4rem);font-weight:900;letter-spacing:-2px}.hero p{font-size:1.15rem;color:#d9ebdd;max-width:650px}.feature{height:100%;padding:20px;background:#ffffff12;border:1px solid #ffffff2e;border-radius:18px;backdrop-filter:blur(4px)}.feature h2{font-size:1rem;font-weight:800}.menu-panel{background:linear-gradient(135deg,#edf8df,#d9f2e5 45%,#dcefff);color:#183128;border:1px solid #ffffff85;border-radius:28px;padding:32px;box-shadow:0 22px 55px #071c1440;position:relative;overflow:hidden}.menu-panel:before{content:'🌿';position:absolute;right:-15px;top:-32px;font-size:9rem;opacity:.12}.menu-panel h2{font-weight:800}.menu-card{display:block;height:100%;padding:18px;border:1px solid #ffffffcc;border-radius:15px;color:#183128;text-decoration:none;transition:.2s;background:#ffffffbd;box-shadow:0 5px 14px #27604412}.menu-card:hover{transform:translateY(-4px);box-shadow:0 10px 22px #18312825;color:#183128;text-decoration:none;background:#fff}.menu-card span{font-size:1.6rem;display:block;margin-bottom:7px}.menu-card strong{display:block}.trust{color:#d9ebdd;font-size:.9rem}.btn-start{border-radius:12px;padding:12px 22px;font-weight:800}
+  </style>
+</head>
+<body>
+  <main class="welcome">
+    <div class="container">
+      <header class="d-flex align-items-center justify-content-between"><div class="brand"><span class="brand-mark">🌿</span>AgriPilot</div></header>
+      <section class="hero text-center">
+        <div class="mb-3" style="font-size:4rem">👋</div>
+        <h1>Bienvenue sur AgriPilot</h1>
+        <p class="mx-auto mt-3">Le compagnon simple et fiable pour suivre votre exploitation agricole. Gardez le contrôle de vos dépenses, de vos ventes et de votre bénéfice, sans calculs compliqués.</p>
+        <button class="btn btn-light btn-start mt-3" onclick="document.getElementById('menu').scrollIntoView({behavior:'smooth'})">Commencer maintenant</button>
+        <div class="row text-left mt-5"><div class="col-md-4 mb-3"><article class="feature"><h2>🔒 Vos données restent à vous</h2><p class="mb-0">Les informations sont enregistrées localement sur votre appareil.</p></article></div><div class="col-md-4 mb-3"><article class="feature"><h2>⚡ Rapide et facile</h2><p class="mb-0">Ajoutez une charge ou une vente en quelques secondes.</p></article></div><div class="col-md-4 mb-3"><article class="feature"><h2>📈 Des décisions éclairées</h2><p class="mb-0">Visualisez le chiffre d’affaires, les charges et le résultat net.</p></article></div></div>
+      </section>
+      <section id="menu" class="menu-panel">
+        <div class="text-center mb-4"><h2>Tout votre travail au même endroit</h2><p class="text-muted mb-0">Choisissez une interface pour commencer.</p></div>
+        <div class="row"><div class="col-6 col-md-3 mb-3"><a class="menu-card" href="gestion_charges_agri.html"><span>💳</span><strong>Charges</strong><small>Enregistrer les dépenses</small></a></div><div class="col-6 col-md-3 mb-3"><a class="menu-card" href="produit_charge_agricol.html"><span>📦</span><strong>Produits</strong><small>Ajouter les ventes</small></a></div><div class="col-6 col-md-3 mb-3"><a class="menu-card" href="tableau_bord_agri.html"><span>📊</span><strong>Tableau de bord</strong><small>Suivre les résultats</small></a></div><div class="col-6 col-md-3 mb-3"><a class="menu-card" href="notes_agri.html"><span>📝</span><strong>Notes</strong><small>Gérer les rappels</small></a></div><div class="col-6 col-md-3 mb-3"><a class="menu-card" href="recherche_agri.html"><span>🔎</span><strong>Recherche</strong><small>Retrouver achats et charges</small></a></div><div class="col-6 col-md-3 mb-3"><a class="menu-card" href="corbeille_agri.html"><span>🗑️</span><strong>Corbeille</strong><small>Restaurer pendant 30 jours</small></a></div><div class="col-6 col-md-3 mb-3"><button class="menu-card text-left w-100" onclick="window.print()"><span>🖨️</span><strong>Imprimer</strong><small>Imprimer cette présentation</small></button></div><div class="col-6 col-md-3 mb-3"><a class="menu-card" href="gestion_charges_agri.html"><span>🚀</span><strong>Commencer</strong><small>Accéder à votre gestion</small></a></div></div>
+      </section>
+      <p class="trust text-center mt-4 mb-0">AgriPilot vous aide à organiser vos données, à suivre vos performances et à prendre confiance dans vos décisions.</p>
+    </div>
+  </main>
+</body>
+</html>

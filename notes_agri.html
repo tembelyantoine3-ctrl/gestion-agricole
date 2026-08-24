@@ -1,5 +1,65 @@
 <!doctype html>
-<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>AgriPilot — Notes</title><link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css"><link rel="stylesheet" href="agri.css"></head>
-<body><main class="app-shell"><header class="topbar mb-4"><div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between"><div class="brand"><span class="brand-mark">🌿</span>AgriPilot <small class="d-block d-md-inline ml-md-2 font-weight-normal" style="font-size:.82rem;color:#cfe2d3">Pilotage agricole</small></div><nav class="mt-3 mt-md-0"><a class="nav-link-app" href="gestion_charges_agri.html">Charges</a><a class="nav-link-app" href="produit_charge_agricol.html">Produits & tableau de bord</a><a class="nav-link-app active" href="notes_agri.html">Notes</a></nav></div></header>
-<div class="mb-4"><h1 class="h3 font-weight-bold mb-1">Brouillon — Notes</h1><p class="text-muted mb-0">Gardez vos rappels, tâches et informations importantes en un seul endroit.</p></div>
-<div class="row"><section class="col-lg-4 mb-4"><div class="card section-card h-100"><h2 class="section-title">Créer une note</h2><form id="noteForm"><input type="hidden" id="noteId"><div class="form-group"><label for="noteTitle">Titre</label><input id="noteTitle" class="form-control" maxlength="70" required placeholder="Ex. Appeler le fournisseur"></div><div class="form-group"><label for="noteText">Détail</label><textarea id="noteText" class="form-control" rows="6" placeholder="Ajoutez les informations utiles…"></textarea></div><div class="custom-control custom-checkbox mb-3"><input type="checkbox" class="custom-control-input" id="noteUrgent"><label class="custom-control-label" for="noteUrgent">Marquer comme urgente</label></div><button id="noteSubmit" class="btn btn-agri btn-block">Ajouter la note</button><button id="cancelEdit" type="button" class="btn btn-link btn-block d-none">Annuler la modification</button></form></div></section><section class="col-lg-8 mb-4"><div class="card section-card"><div class="d-flex justify-content-between align-items-center mb-3"><h2 class="section-title mb-0">Mes notes</h2><span id="notesCount" class="badge badge-light p-2"></span></div><div id="notesList"></div></div></section></div></main><script src="agri-notes.js"></script></body></html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>AgriPilot — Notes</title>
+<link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
+<link rel="stylesheet" href="agri.css">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar mb-4">
+            <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+                <div class="brand">
+                    <span class="brand-mark">🌿</span>AgriPilot 
+                    <small class="d-block d-md-inline ml-md-2 font-weight-normal" style="font-size:.82rem;color:#cfe2d3">Pilotage agricole</small>
+                </div>
+                <nav class="mt-3 mt-md-0">
+                    <a class="nav-link-app" href="gestion_charges_agri.html">Charges</a>
+                    <a class="nav-link-app" href="produit_charge_agricol.html">Produits & tableau de bord</a>
+                    <a class="nav-link-app active" href="notes_agri.html">Notes</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mb-4">
+            <h1 class="h3 font-weight-bold mb-1">Brouillon — Notes</h1>
+            <p class="text-muted mb-0">Gardez vos rappels, tâches et informations importantes en un seul endroit.</p>
+        </div>
+        <div class="row">
+            <section class="col-lg-4 mb-4">
+                <div class="card section-card h-100">
+                    <h2 class="section-title">Créer une note</h2>
+                    <form id="noteForm">
+                        <input type="hidden" id="noteId">
+                        <div class="form-group">
+                            <label for="noteTitle">Titre</label>
+                            <input id="noteTitle" class="form-control" maxlength="70" required placeholder="Ex. Appeler le fournisseur">
+                        </div>
+                        <div class="form-group">
+                            <label for="noteText">Détail</label>
+                            <textarea id="noteText" class="form-control" rows="6" placeholder="Ajoutez les informations utiles…"></textarea>
+                        </div>
+                        <div class="custom-control custom-checkbox mb-3">
+                            <input type="checkbox" class="custom-control-input" id="noteUrgent">
+                                <label class="custom-control-label" for="noteUrgent">Marquer comme urgente</label>
+                            </div>
+                            <button id="noteSubmit" class="btn btn-agri btn-block">Ajouter la note</button>
+                            <button id="cancelEdit" type="button" class="btn btn-link btn-block d-none">Annuler la modification</button>
+                        </form>
+                    </div>
+                </section>
+                <section class="col-lg-8 mb-4">
+                    <div class="card section-card">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h2 class="section-title mb-0">Mes notes</h2>
+                            <span id="notesCount" class="badge badge-light p-2"></span>
+                        </div>
+                        <div id="notesList"></div>
+                    </div>
+                </section>
+            </div>
+        </main>
+        <script src="agri-notes.js"></script>
+    </body>
+    </html>

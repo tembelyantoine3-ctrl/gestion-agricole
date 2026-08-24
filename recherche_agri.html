@@ -1,0 +1,46 @@
+<!doctype html><html lang="fr">
+<head>
+ <meta charset="utf-8">
+ <meta name="viewport" content="width=device-width,initial-scale=1">
+ <title>Recherche — AgriPilot</title>
+ <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
+ <link rel="stylesheet" href="agri.css">
+</head>
+<body>
+    <main class="app-shell">
+        <header class="topbar mb-4">
+            <div class="brand">
+                <span class="brand-mark">🔎</span>AgriPilot — Recherche
+            </div>
+            <nav class="mt-3">
+                <a class="nav-link-app" href="index.html">Accueil</a>
+                <a class="nav-link-app" href="produit_charge_agricol.html">Produits</a>
+                <a class="nav-link-app" href="tableau_bord_agri.html">Tableau de bord</a>
+                <a class="nav-link-app" href="corbeille_agri.html">Corbeille</a>
+            </nav>
+        </header>
+        <div class="d-flex justify-content-between">
+            <div>
+                <h1 class="h3 font-weight-bold">Achats par client ou produit</h1>
+                <p class="text-muted">Saisissez un nom de client ou de produit.</p>
+            </div>
+            <button class="btn btn-outline-secondary mb-3" onclick="window.print()">Imprimer la fiche</button>
+        </div>
+        <section class="card section-card">
+            <div class="input-group mb-4">
+                <input id="term" class="form-control" placeholder="Ex. Mariama ou Tomates">
+                <div class="input-group-append">
+                    <button class="btn btn-agri" onclick="search()">Rechercher</button>
+                </div>
+            </div>
+            <div id="result"></div>
+        </section>
+    </main>
+    <script>const money=n=>Math.round(n||0).toLocaleString('fr-FR')+' FCFA',esc=s=>String(s||'').replace(/[&<>"']/g,x=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[x]));
+        function search(){let term=document.getElementById('term').value.trim().toLowerCase(),p=JSON.parse(localStorage.getItem('produits_agri')||'[]').filter(x=>(x.nom+' '+(x.client||'')).toLowerCase().includes(term)),ca=p.reduce((s,x)=>s+x.ca,0),qty=p.reduce((s,x)=>s+x.vendue,0);
+        document.getElementById('result').innerHTML=p.length?`<div class="row mb-3"><div class="col-md-4"><strong>${p.length}</strong> achat(s)</div><div class="col-md-4"><strong>${qty}</strong> unités</div><div class="col-md-4"><strong>${money(ca)}</strong> chiffre d’affaires</div></div><table 
+        class="table"><thead class="thead-dark"><tr><th>Date</th><th>Client</th><th>Produit</th><th>Qté</th><th>Montant</th></tr></thead><tbody>${p.map(x=>`<tr><td>${new Date(x.date+'T00:00:00').toLocaleDateString('fr-FR')}</td><td>${esc(x.client||'Non renseigné')}</td><td>${esc(x.nom)}</td><td>${x.vendue}</td><td>${money(x.ca)}
+        </td></tr>`).join('')}</tbody></table>`:'<p class="empty">Aucun achat trouvé.</p>'}document.getElementById('term').addEventListener('keydown',e=>{if(e.key==='Enter')search()})
+    </script>
+    </body>
+    </html>
