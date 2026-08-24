@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>AgriPilot — Charges</title>
+    <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="agri.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    </head>
+    <body>
+      <main class="app-shell">
+        <header class="topbar mb-4">
+          <div class="d-flex flex-column flex-md-row align-items-md-center justify-content-between">
+            <div class="brand">
+              <span class="brand-mark">🌿</span>AgriPilot 
+              <small class="d-block d-md-inline ml-md-2 font-weight-normal" style="font-size:.82rem;color:#cfe2d3">Pilotage agricole</small>
+            </div>
+            <nav class="mt-3 mt-md-0">
+              <a class="nav-link-app active" href="gestion_charges_agri.html">Charges</a>
+              <a class="nav-link-app" href="produit_charge_agricol.html">Produits</a>
+              <a class="nav-link-app" href="tableau_bord_agri.html">Tableau de bord</a>
+              <a class="nav-link-app" href="notes_agri.html">Notes</a>
+            </nav>
+          </div>
+        </header>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <div>
+            <h1 class="h3 font-weight-bold mb-1">Gestion des charges</h1>
+            <p class="text-muted mb-0">Enregistrez et suivez chaque dépense de l’exploitation.</p>
+          </div>
+          <span class="badge badge-light p-2">Données locales</span>
+        </div>
+        <section class="row">
+          <div class="col-6 col-lg-3 mb-3">
+            <div class="card metric metric-total">
+              <small>Total charges</small>
+              <strong id="totalCharges">0 FCFA</strong>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3 mb-3">
+            <div class="card metric metric-day">
+              <small>Aujourd’hui</small>
+              <strong id="dayCharges">0 FCFA</strong>
+            </div>
+          </div>
+          <div class="col-6 col-lg-3 mb-3">
+            <div class="card metric metric-month">
+              <small>Ce mois</small>
+              <strong id="monthCharges">0 FCFA</strong>
+            </div></div><div class="col-6 col-lg-3 mb-3">
+              <div class="card metric metric-year">
+                <small>Cette année</small>
+                <strong id="yearCharges">0 FCFA</strong>
+              </div>
+            </div>
+          </section>
+          <div class="row">
+            <section class="col-lg-4 mb-4">
+              <div class="card section-card h-100">
+                <h2 class="section-title">Nouvelle charge</h2>
+                <form id="chargeForm">
+                  <div class="form-group">
+                    <label>Date</label>
+                    <input type="date" id="c_date" class="form-control" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Nom du produit / dépense</label>
+                    <input id="c_nom" class="form-control" placeholder="Ex. Engrais NPK" required>
+                  </div>
+                  <div class="form-group">
+                    <label>Catégorie</label>
+                    <select id="c_option" class="custom-select">
+                      <option value="fixe">Charge fixe</option>
+                      <option value="variable">Charge variable</option>
+                      <option value="amortissable">Charge amortissable</option>
+                    </select>
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group col-6">
+                      <label>Prix unitaire</label>
+                      <input type="number" id="c_prix" min="0" class="form-control" required>
+                    </div>
+                    <div class="form-group col-6">
+                      <label>Quantité</label>
+                      <input type="number" id="c_qte" min="1" step="any" value="1" class="form-control" required>
+                    </div>
+                  </div>
+                  <div class="alert alert-light border py-2">Montant total : <strong id="amountPreview">0 FCFA</strong>
+                  </div>
+                  <div id="c_duree_wrap" class="form-row" style="display:none">
+                    <div class="form-group col-6">
+                      <label>Unité</label>
+                      <select id="c_unite" class="custom-select">
+                        <option value="annee">Années</option>
+                        <option value="mois">Mois</option>
+                      </select>
+                    </div>
+                    <div class="form-group col-6">
+                      <label>Durée</label>
+                      <input type="number" id="c_duree_val" min="1" value="1" class="form-control">
+                    </div>
+                  </div>
+                  <button class="btn btn-agri btn-block">Enregistrer</button>
+                </form>
+              </div>
+            </section>
+            <section class="col-lg-8 mb-4">
+              <div class="card section-card">
+                <div class="d-flex justify-content-between">
+                  <h2 class="section-title">Évolution des charges</h2>
+                  <span id="largestCharge" class="small text-muted">
+                 </span>
+                </div>
+                <div class="chart-box">
+                  <canvas id="chartMonthly">
+                 </canvas>
+                </div>
+              </div>
+            </section>
+          </div>
+          <section class="card section-card mb-4">
+            <div class="d-flex justify-content-between">
+              <h2 class="section-title">Historique des charges</h2>
+              <span id="countOps" class="badge badge-light p-2"></span>
+            </div>
+            <div class="table-responsive">
+              <table class="table table-hover mb-0">
+                <thead>
+                  <tr>
+                    <th>Date</th>
+                    <th>Dépense</th>
+                    <th>Catégorie</th>
+                    <th>Prix unitaire</th>
+                    <th>Qté</th>
+                    <th>Montant</th>
+                    <th></th>
+                  </tr>
+                </thead>
+                <tbody id="chargesTableBody"></tbody>
+              </table>
+            </div>
+          </section>
+      </main>
+    <script src="agri-charges.js">
+  </script>
+</body>
+</html>
